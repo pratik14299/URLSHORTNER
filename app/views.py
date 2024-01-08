@@ -10,7 +10,8 @@ from app import disutils
 # Create your views here. 
 def homeView(request):
     if request.method == 'POST':
-        url = request.POST.get('url')  
+        url = request.POST.get('url') 
+        print(url) 
         s = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()'
         shortCode = ("".join(random.sample(s,6)))  
         data = Url_short(url=url, short_url=shortCode) 
@@ -30,7 +31,7 @@ def homeView(request):
         else:
            return HttpResponse('Check Your URL')
          
-        #return HttpResponse(f'for {url} your short url is {shortCode}')
+        return HttpResponse(f'for {url} your short url is {shortCode}')
         
     return render(request, 'home.html')
 
